@@ -1,0 +1,17 @@
+#file
+*.meta
+.meta
+*.cs.meta
+.cs.meta
+*.unity
+.unity
+*.unity.meta
+.unity.meta
+*.ttf.meta
+*.ttf
+*.otf
+*.otf.meta
+#img
+*.png
+*.jpg
+
