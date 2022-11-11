@@ -69,13 +69,13 @@ public class LoginGui : MonoBehaviour
          if (eLoginState_0 == eLoginState.login)
         {
            // Text Input
-            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 - 65f, 751f, 200f, 50f), this.string_0, 15,this.guistyle_0);
+            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 - 65f, 751f, 200f, 30f), this.string_0, 15);
             // Password Input
-            this.string_1 = GUI.PasswordField(new Rect(0.5f * this.float_1 - 65f, 785f, 200f, 50f), this.string_1, "*"[0], 15,this.guistyle_0);
+            this.string_1 = GUI.PasswordField(new Rect(0.5f * this.float_1 - 65f, 785f, 200f, 30f), this.string_1, "*"[0],15);
 
             if (GUI.Button(new Rect(0.5f * this.float_1 - 68f, 832f, 136f, 36f), "Login"))
             {
-                    StartCoroutine(UMIAPIUser.hInst.umiGetUser(this.string_0));
+                    StartCoroutine(UMIAPIUser.hInst.UMIGetUser(this.string_0));
             }
         }
         

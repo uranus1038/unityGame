@@ -7,17 +7,17 @@ namespace UMI.API
 public class UMIAPIUser : MonoBehaviour
 {
     public static UMIAPIUser hInst ;
-    private  string UMIWebUser = "http://localhost/generator-back-end/api/test.php";
+    private  string UMIWebUser = "http://localhost:8000/api/login/login";
     // Start is called before the first frame update
     void Awake()
     {
         hInst = this ; 
     }
-    public  IEnumerator umiGetUser( string helloApi )
+    public  IEnumerator UMIGetUser( string UID )
     {
-            WWWForm umiReq = new WWWForm();
-            umiReq.AddField("name", helloApi);
-            using (UnityWebRequest www = UnityWebRequest.Post(this.UMIWebUser, umiReq))
+            WWWForm UMIReq = new WWWForm();
+            UMIReq.AddField("userName", UID);
+            using (UnityWebRequest www = UnityWebRequest.Post(this.UMIWebUser, UMIReq))
             {
                 yield return www.SendWebRequest();
 
