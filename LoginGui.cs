@@ -9,11 +9,13 @@ public class LoginGui : MonoBehaviour
     private string string_1 ; 
     private float float_0;
     private float float_1;
+    public eLoginState eLoginState_0;
+    //GUI
     private GUIStyle guistyle_0;
-    public eLoginState eLoginState_0; 
-
-    //texture
+    //Texture
     private Texture texture_0;
+    private Texture texture_1;
+    private Texture texture_2;
     // Void Awake
     private void Awake()
     {
@@ -28,11 +30,12 @@ public class LoginGui : MonoBehaviour
     {
         //Texture
         this.texture_0 = (Texture)Resources.Load("GUI/Login/black", typeof(Texture));
-
+        this.texture_1 = (Texture)Resources.Load("GUI/Login/Login_bar", typeof(Texture));
         //GUI
         this.guistyle_0 = new GUIStyle();
-        this.guistyle_0.font = (Font)Resources.Load("Font/maaja", typeof(Font));
-        this.guistyle_0.fontSize = 50;
+        //this.guistyle_0.normal.background = (Texture2D)(Texture)Resources.Load("GUI/Login/text_box", typeof(Texture));
+        this.guistyle_0.font = (Font)Resources.Load("Font/Kanit-Light", typeof(Font));
+        this.guistyle_0.fontSize = 28;
     } 
     // Display GUI
     private void OnGUI()
@@ -68,14 +71,18 @@ public class LoginGui : MonoBehaviour
         }
          if (eLoginState_0 == eLoginState.login)
         {
-           // Text Input
-            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 - 65f, 751f, 200f, 30f), this.string_0, 15);
+            GUI.DrawTexture(new Rect(0.5f * this.float_1 -219f, 658f, 438f, 236f), this.texture_1);
+            // Text Input
+            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 -118f, 705f, 288f, 30f), this.string_0, 15 , this.guistyle_0);
             // Password Input
             this.string_1 = GUI.PasswordField(new Rect(0.5f * this.float_1 - 65f, 785f, 200f, 30f), this.string_1, "*"[0],15);
 
-            if (GUI.Button(new Rect(0.5f * this.float_1 - 68f, 832f, 136f, 36f), "Login"))
+            if(this.string_0 != string.Empty)
             {
+                if (GUI.Button(new Rect(0.5f * this.float_1 - 68f, 832f, 136f, 36f), "Login"))
+                {
                     StartCoroutine(UMIAPIUser.hInst.UMIGetUser(this.string_0));
+                }
             }
         }
         
