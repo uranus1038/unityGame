@@ -12,6 +12,7 @@ public class LoginGui : MonoBehaviour
     public eLoginState eLoginState_0;
     //GUI
     private GUIStyle guistyle_0;
+    private GUIStyle guistyle_1;
     //Texture
     private Texture texture_0;
     private Texture texture_1;
@@ -35,7 +36,11 @@ public class LoginGui : MonoBehaviour
         this.guistyle_0 = new GUIStyle();
         //this.guistyle_0.normal.background = (Texture2D)(Texture)Resources.Load("GUI/Login/text_box", typeof(Texture));
         this.guistyle_0.font = (Font)Resources.Load("Font/Kanit-Light", typeof(Font));
-        this.guistyle_0.fontSize = 28;
+        this.guistyle_0.fontSize = 20;
+
+        this.guistyle_1 = new GUIStyle();
+        this.guistyle_1.normal.background = (Texture2D)(Texture)Resources.Load("GUI/Login/Login_Button_n", typeof(Texture));
+        this.guistyle_1.hover.background = (Texture2D)(Texture)Resources.Load("GUI/Login/Login_Button_h", typeof(Texture));
     } 
     // Display GUI
     private void OnGUI()
@@ -73,13 +78,13 @@ public class LoginGui : MonoBehaviour
         {
             GUI.DrawTexture(new Rect(0.5f * this.float_1 -219f, 658f, 438f, 236f), this.texture_1);
             // Text Input
-            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 -118f, 705f, 288f, 30f), this.string_0, 15 , this.guistyle_0);
+            this.string_0 = GUI.TextField(new Rect(0.5f * this.float_1 -118f, 713f, 288f, 30f), this.string_0, 15 , this.guistyle_0);
             // Password Input
-            this.string_1 = GUI.PasswordField(new Rect(0.5f * this.float_1 - 65f, 785f, 200f, 30f), this.string_1, "*"[0],15);
+            this.string_1 = GUI.PasswordField(new Rect(0.5f * this.float_1 - 118f, 762f, 288f, 30f), this.string_1, "*"[0],15, this.guistyle_0);
 
             if(this.string_0 != string.Empty)
             {
-                if (GUI.Button(new Rect(0.5f * this.float_1 - 68f, 832f, 136f, 36f), "Login"))
+                if (GUI.Button(new Rect(0.5f * this.float_1 - 156f, 804f, 343f, 37f), string.Empty , this.guistyle_1))
                 {
                     StartCoroutine(UMIAPIUser.hInst.UMIGetUser(this.string_0));
                 }
